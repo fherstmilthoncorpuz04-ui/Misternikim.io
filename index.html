@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Little Universe ❤️</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        min-height: 100vh;
+        overflow-x: hidden;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #ffd6e5, #ffeef5, #ffdce9);
+        color: #74384c;
+    }
+
+    /* Main Card */
+    .hero {
+        width: 90%;
+        max-width: 360px;
+        margin: 70px auto;
+        padding: 25px 15px;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.65);
+        border-radius: 30px;
+        box-shadow: 0 15px 40px rgba(180, 80, 110, 0.18);
+        backdrop-filter: blur(8px);
+        position: relative;
+        z-index: 10;
+    }
+
+    h1 {
+        font-size: 28px;
+        margin-bottom: 12px;
+    }
+
+    .quote {
+        font-size: 15px;
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+
+    .date {
+        font-size: 14px;
+        font-weight: bold;
+        letter-spacing: 3px;
+        margin: 15px 0 25px;
+    }
+
+    .heart {
+        font-size: 45px;
+        animation: heartbeat 1.4s infinite;
+    }
+
+    @keyframes heartbeat {
+        0%, 100% {
+            transform: scale(1);
+        }
+
+        50% {
+            transform: scale(1.18);
+        }
+    }
+
+    /* Buttons */
+    .button {
+        display: block;
+        text-decoration: none;
+        color: white;
+        margin: 14px 0;
+        padding: 14px 18px;
+        border-radius: 18px;
+        font-weight: bold;
+        position: relative;
+        background: #ed8fab;
+        box-shadow: 0 7px 0 #bd5d73;
+        transition: transform 0.12s ease, box-shadow 0.12s ease;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    /* All buttons same color */
+    .story,
+    .promise,
+    .surprise {
+        background: #ed8fab;
+    }
+
+    /* Cute button emojis */
+    .story::before {
+        content: "💗";
+        position: absolute;
+        left: 12px;
+    }
+
+    .story::after {
+        content: "🦋";
+        position: absolute;
+        right: 12px;
+    }
+
+    .promise::before {
+        content: "🤍";
+        position: absolute;
+        left: 12px;
+    }
+
+    .promise::after {
+        content: "🌸";
+        position: absolute;
+        right: 12px;
+    }
+
+    .surprise::before {
+        content: "🎀";
+        position: absolute;
+        left: 12px;
+    }
+
+    .surprise::after {
+        content: "✨";
+        position: absolute;
+        right: 12px;
+    }
+
+    /* Press / drag-down effect */
+    .button.pressed {
+        transform: translateY(10px) scale(0.96);
+        box-shadow: 0 2px 0 #bd5d73;
+    }
+
+    /* Flying Fairies */
+    .fairy {
+        position: fixed;
+        font-size: 28px;
+        z-index: 1;
+        pointer-events: none;
+        animation: fly linear infinite;
+    }
+
+    .fairy:nth-child(1) {
+        top: 8%;
+        left: -50px;
+        animation-duration: 12s;
+    }
+
+    .fairy:nth-child(2) {
+        top: 22%;
+        left: -50px;
+        animation-duration: 15s;
+        animation-delay: 2s;
+    }
+
+    .fairy:nth-child(3) {
+        top: 38%;
+        left: -50px;
+        animation-duration: 11s;
+        animation-delay: 4s;
+    }
+
+    .fairy:nth-child(4) {
+        top: 55%;
+        left: -50px;
+        animation-duration: 16s;
+        animation-delay: 1s;
+    }
+
+    .fairy:nth-child(5) {
+        top: 72%;
+        left: -50px;
+        animation-duration: 13s;
+        animation-delay: 3s;
+    }
+
+    .fairy:nth-child(6) {
+        top: 88%;
+        left: -50px;
+        animation-duration: 17s;
+        animation-delay: 5s;
+    }
+
+    .fairy:nth-child(7) {
+        top: 15%;
+        left: -50px;
+        animation-duration: 14s;
+        animation-delay: 6s;
+    }
+
+    .fairy:nth-child(8) {
+        top: 47%;
+        left: -50px;
+        animation-duration: 12s;
+        animation-delay: 7s;
+    }
+
+    .fairy:nth-child(9) {
+        top: 65%;
+        left: -50px;
+        animation-duration: 15s;
+        animation-delay: 8s;
+    }
+
+    .fairy:nth-child(10) {
+        top: 30%;
+        left: -50px;
+        animation-duration: 18s;
+        animation-delay: 9s;
+    }
+
+    @keyframes fly {
+        0% {
+            transform: translateX(-80px) translateY(0) rotate(-10deg);
+        }
+
+        25% {
+            transform: translateX(25vw) translateY(-30px) rotate(10deg);
+        }
+
+        50% {
+            transform: translateX(50vw) translateY(20px) rotate(-8deg);
+        }
+
+        75% {
+            transform: translateX(75vw) translateY(-25px) rotate(8deg);
+        }
+
+        100% {
+            transform: translateX(110vw) translateY(0) rotate(-10deg);
+        }
+    }
+
+    /* Sparkles */
+    .sparkle {
+        position: fixed;
+        color: white;
+        font-size: 18px;
+        pointer-events: none;
+        z-index: 2;
+        animation: sparkle 2s infinite ease-in-out;
+    }
+
+    .sparkle:nth-of-type(11) {
+        top: 12%;
+        left: 15%;
+    }
+
+    .sparkle:nth-of-type(12) {
+        top: 28%;
+        left: 80%;
+        animation-delay: .5s;
+    }
+
+    .sparkle:nth-of-type(13) {
+        top: 50%;
+        left: 10%;
+        animation-delay: 1s;
+    }
+
+    .sparkle:nth-of-type(14) {
+        top: 70%;
+        left: 85%;
+        animation-delay: 1.5s;
+    }
+
+    .sparkle:nth-of-type(15) {
+        top: 85%;
+        left: 25%;
+        animation-delay: .7s;
+    }
+
+    @keyframes sparkle {
+        0%, 100% {
+            opacity: 0;
+            transform: scale(.5);
+        }
+
+        50% {
+            opacity: 1;
+            transform: scale(1.3);
+        }
+    }
+
+    /* Music Message */
+    .music-message {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(.8);
+        background: rgba(255, 255, 255, .9);
+        padding: 14px 22px;
+        border-radius: 30px;
+        box-shadow: 0 10px 30px rgba(150, 70, 100, .2);
+        font-weight: bold;
+        opacity: 0;
+        pointer-events: none;
+        transition: .3s ease;
+        z-index: 100;
+    }
+
+    .music-message.show {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+</style>
+</head>
+
+<body>
+
+<!-- Flying Fairies -->
+<div class="fairy">🧚‍♀️</div>
+<div class="fairy">🧚‍♂️</div>
+<div class="fairy">🧚‍♀️</div>
+<div class="fairy">🧚‍♂️</div>
+<div class="fairy">🧚‍♀️</div>
+<div class="fairy">🧚‍♂️</div>
+<div class="fairy">🧚‍♀️</div>
+<div class="fairy">🧚‍♂️</div>
+<div class="fairy">🧚‍♀️</div>
+<div class="fairy">🧚‍♂️</div>
+
+<!-- Sparkles -->
+<div class="sparkle">✨</div>
+<div class="sparkle">✨</div>
+<div class="sparkle">✨</div>
+<div class="sparkle">✨</div>
+<div class="sparkle">✨</div>
+
+<!-- Main Card -->
+<div class="hero">
+
+    <div class="heart">❤️</div>
+
+    <h1>Happy 1st Monthsary, Love! ❤️</h1>
+
+    <p class="quote">
+        One month of us, and countless memories to come.
+    </p>
+
+    <div class="date">
+        08 • 10 • 2026
+    </div>
+
+    <a href="aboutus.html" class="button story">
+        Open Our Story 💌
+    </a>
+
+    <a href="promise.html" class="button promise">
+        My Promise 🤍
+    </a>
+
+    <a href="surprise.html" class="button surprise">
+        One Last Surprise 🎁
+    </a>
+
+</div>
+
+<!-- Hidden Music -->
+<audio id="bgMusic" preload="auto" loop>
+    <source src="./song.mp3/song4.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Music Message -->
+<div id="musicMessage" class="music-message">
+    🎵 Music On 💗
+</div>
+
+<script>
+    const music = document.getElementById("bgMusic");
+    const message = document.getElementById("musicMessage");
+    const buttons = document.querySelectorAll(".button");
+
+    music.volume = 0.35;
+
+    let musicStarted = false;
+    let startingMusic = false;
+
+    function startMusic(event) {
+
+        /* Don't start music when pressing a navigation button */
+        if (
+            event &&
+            event.target &&
+            event.target.closest(".button")
+        ) {
+            return;
+        }
+
+        if (musicStarted || startingMusic) {
+            return;
+        }
+
+        startingMusic = true;
+
+        music.play()
+            .then(function () {
+
+                musicStarted = true;
+                startingMusic = false;
+
+                message.classList.add("show");
+
+                setTimeout(function () {
+                    message.classList.remove("show");
+                }, 1300);
+
+            })
+            .catch(function (error) {
+
+                startingMusic = false;
+
+                console.log(
+                    "Music could not play:",
+                    error
+                );
+
+            });
+    }
+
+    /* Tap / swipe / scroll interaction starts music */
+    document.addEventListener(
+        "pointerdown",
+        startMusic,
+        false
+    );
+
+    document.addEventListener(
+        "touchstart",
+        startMusic,
+        {
+            passive: true
+        }
+    );
+
+    document.addEventListener(
+        "click",
+        startMusic,
+        false
+    );
+
+    document.addEventListener(
+        "wheel",
+        startMusic,
+        {
+            passive: true
+        }
+    );
+
+    /* Stop music when opening another page */
+    buttons.forEach(function(button) {
+
+        button.addEventListener(
+            "pointerdown",
+            function() {
+
+                music.pause();
+                music.currentTime = 0;
+
+                button.classList.add("pressed");
+
+            }
+        );
+
+        button.addEventListener(
+            "pointerup",
+            function() {
+                button.classList.remove("pressed");
+            }
+        );
+
+        button.addEventListener(
+            "pointercancel",
+            function() {
+                button.classList.remove("pressed");
+            }
+        );
+
+        button.addEventListener(
+            "click",
+            function() {
+
+                music.pause();
+                music.currentTime = 0;
+
+            }
+        );
+
+    });
+</script>
+
+</body>
+</html>
